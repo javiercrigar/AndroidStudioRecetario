@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ListView
         android:id="@+id/mp_listado"
-        android:layout_width="685dp"
-        android:layout_height="324dp"
+        android:layout_width="536dp"
+        android:layout_height="320dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,8 +17,8 @@
         android:id="@+id/mp_volver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="64dp"
         android:text="@string/title_Volver"
         app:layout_constraintStart_toEndOf="@+id/mp_listado"
         app:layout_constraintTop_toTopOf="parent" />

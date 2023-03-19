@@ -37,7 +37,7 @@ public class ClaseDialogoAñadirPlato extends DialogFragment {
                         intent.putExtra("dia",pdia);
                         intent.putExtra("mes",pmes);
                         intent.putExtra("año",paño);
-                        //Toast.makeText(getContext(), ""+dia+ " "+mes+" "+año, Toast.LENGTH_SHORT).show();
+
                         startActivity(intent);
                         break;
                     case 1:

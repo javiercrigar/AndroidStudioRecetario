@@ -7,8 +7,8 @@
 
     <ListView
         android:id="@+id/mr_listado"
-        android:layout_width="685dp"
-        android:layout_height="324dp"
+        android:layout_width="490dp"
+        android:layout_height="326dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"

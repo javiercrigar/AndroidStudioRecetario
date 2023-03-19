@@ -47,22 +47,19 @@
         android:id="@+id/modi_bot_guardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="28dp"
         android:text="Guardar"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/modi_bot_borrar"
         app:layout_constraintTop_toBottomOf="@+id/modi_texto" />
 
     <Button
         android:id="@+id/modi_bot_borrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="504dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="25dp"
         android:text="borrar"
-        app:layout_constraintEnd_toStartOf="@+id/modi_bot_guardar"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/modi_bot_voler"
+        app:layout_constraintTop_toBottomOf="@+id/modi_texto" />
 </androidx.constraintlayout.widget.ConstraintLayout>
