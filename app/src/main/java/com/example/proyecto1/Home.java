@@ -14,7 +14,6 @@ import com.example.proyecto1.databinding.ActivityHomeBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class Home extends AppCompatActivity {
-    //private static final String LAST_FRAGMENT_KEY = "last_fragment";
     private String lastFragment;
 
     ActivityHomeBinding binding;
