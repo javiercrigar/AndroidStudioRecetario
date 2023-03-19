@@ -61,6 +61,7 @@ public class Home extends AppCompatActivity {
         outState.putString("fragment_act", lastFragment);
     }
 
+    //He mirado este video para aprender a mover los fragments https://www.youtube.com/watch?v=rm9NGA9UBXs&ab_channel=Codelia
     //Metodo para reemplazar los fragment
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager= getSupportFragmentManager();

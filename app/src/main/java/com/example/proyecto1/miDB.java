@@ -26,6 +26,7 @@ public class miDB extends SQLiteOpenHelper {
     private static final String TABLE_RECETAS = "t_recetas";
     private static final String TABLE_PLATOS = "t_platos";
 
+    // He mirado este video para aprender las bases de datos : https://www.youtube.com/watch?v=KAo5-ayChbs&ab_channel=LaGeekipediaDeErnesto
     public miDB(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
     }
