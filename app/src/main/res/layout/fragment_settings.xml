@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsFragment"
+    android:id="@+id/frament_main">
+
+    <Button
+        android:id="@+id/aju_bot_borrar_platos"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="150dp"
+        android:text="Borrar todos los platos"
+        android:gravity="right"
+        />
+
+    <Button
+        android:id="@+id/aju_bot_borrar_usuarios"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="75dp"
+        android:gravity="center"
+        android:text="Borrar todos los usuarios" />
+
+    <Button
+        android:id="@+id/aju_bot_borrar_recetas"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="225dp"
+        android:gravity="center"
+        android:text="Borrar todas las recetas" />
+</FrameLayout>

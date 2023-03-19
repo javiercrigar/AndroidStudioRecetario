@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Proyecto1</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_crear">Crear</string>
+    <string name="title_catalogo">Catalogo</string>
+    <string name="title_ajustes">Ajustes</string>
+    <string name="title_recetas" translatable="false">Recetas</string>
+
+    <string name="crear">Crear</string>
+    <string name="volver">volver</string>
+
+    <string name="title_nombre">Nombre</string>
+    <string name="title_contraseña">Contraseña</string>
+    <string name="title_gmail">Gmail</string>
+    <string name="title_Registrarse">Registrarse</string>
+    <string name="title_Volver">Volver</string>
+    <string name="title_Continuar">Continuar</string>
+
+    <string name="title_CambiarFondo">Cambiar fondo</string>
+    <string name="title_CambiarIdioma">Cambiar idioma</string>
+    <string name="title_CambiarAjustes">Cambiar ajustes</string>
+
+    <string name="title_CrearRecetas">Crear recetas</string>
+    <string name="title_Ver">Ver recetas</string>
+    <string name="title_Borrar">Borrar recetas</string>
+</resources>

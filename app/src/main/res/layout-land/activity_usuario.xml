@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Usuario">
+
+    <TextView
+        android:id="@+id/usu_text_con"
+        android:layout_width="198dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:text="Modificar contraseña"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/usu_p1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:hint="Introduzca la contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usu_text_con" />
+
+    <EditText
+        android:id="@+id/usu_p2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Introduzca la contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usu_p1" />
+
+    <Button
+        android:id="@+id/usu_bot_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="13dp"
+        android:text="Guardar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usu_p2" />
+
+    <TextView
+        android:id="@+id/usu_text_gmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="396dp"
+        android:layout_marginTop="16dp"
+        android:text="Modificar gmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/usu_gmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Introduzca usuario"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usu_text_gmail" />
+
+    <Button
+        android:id="@+id/usu_bot_gmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="61dp"
+        android:text="Modificar"
+        app:layout_constraintStart_toEndOf="@+id/usu_p2"
+        app:layout_constraintTop_toBottomOf="@+id/usu_gmail2" />
+
+    <EditText
+        android:id="@+id/usu_n"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="396dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Introduzca usuario"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usu_text_con" />
+
+    <EditText
+        android:id="@+id/usu_gmail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Introduzca nuevo Gmail
+"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toEndOf="@+id/usu_p1"
+        app:layout_constraintTop_toBottomOf="@+id/usu_n" />
+
+    <Button
+        android:id="@+id/usu_bot_volver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="268dp"
+        android:layout_marginTop="61dp"
+        android:text="@string/title_Volver"
+        app:layout_constraintStart_toEndOf="@+id/usu_bot_pass"
+        app:layout_constraintTop_toBottomOf="@+id/usu_gmail2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

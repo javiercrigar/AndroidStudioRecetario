@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/modi_bot_voler"
+        android:layout_width="107dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/title_Volver"
+        app:layout_constraintStart_toEndOf="@+id/modi_texto"
+        app:layout_constraintTop_toBottomOf="@+id/modi_bot_borrar" />
+
+    <EditText
+        android:id="@+id/modi_nombre"
+        android:layout_width="473dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="49dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/modi_texto"
+        android:layout_width="472dp"
+        android:layout_height="194dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modi_nombre" />
+
+    <Button
+        android:id="@+id/modi_bot_guardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="80dp"
+        android:text="Guardar"
+        app:layout_constraintStart_toEndOf="@+id/modi_nombre"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/modi_bot_borrar"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="28dp"
+        android:text="borrar"
+        app:layout_constraintStart_toEndOf="@+id/modi_texto"
+        app:layout_constraintTop_toBottomOf="@+id/modi_bot_guardar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
