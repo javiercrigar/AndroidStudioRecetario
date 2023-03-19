@@ -26,6 +26,7 @@ public class ModificarPlato extends AppCompatActivity {
 
         titulo.setText(intent.getStringExtra("titulo"));
 
+        //Vuelve a Home
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,23 +35,26 @@ public class ModificarPlato extends AppCompatActivity {
             }
         });
 
+        //Elimina el plato seleccionado
         borrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 miDB DB =new miDB(getApplicationContext(),"Usuar.db",null,1);
                 SQLiteDatabase db = DB.getWritableDatabase();
-
+                if(titulo.getText().toString().isEmpty()==false){
                 db.delete("t_platos","plato=?",new String[]{titulo.getText().toString()});
                 db.close();
-
                 Toast.makeText(ModificarPlato.this, "Has borrado el plato", Toast.LENGTH_SHORT).show();
 
                 Intent intent= new Intent(ModificarPlato.this,Home.class);
                 startActivity(intent);
+
+                }
+                else{
+                    Toast.makeText(ModificarPlato.this, "Un campo vacio", Toast.LENGTH_SHORT).show();
+                }
+                db.close();
             }
         });
-
-
-
     }
 }

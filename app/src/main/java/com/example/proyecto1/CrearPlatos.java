@@ -41,8 +41,6 @@ public class CrearPlatos extends AppCompatActivity {
                 else{
                     Toast.makeText(CrearPlatos.this, "Un campo vacio", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(CrearPlatos.this, ""+dia+" "+mes+" "+año+" "+titulo.getText().toString() , Toast.LENGTH_SHORT).show();
-
             }
         });
         //Boton para volver a Home

@@ -27,7 +27,6 @@ public class MostrarPlatos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_platos);
-        ///hacer el codigo para poner el color que este guardado en la instancia
 
         l1 = (ListView) findViewById(R.id.mp_listado);
         volver = findViewById(R.id.mp_volver);
@@ -40,6 +39,7 @@ public class MostrarPlatos extends AppCompatActivity {
         miDB DB = new miDB(getApplicationContext(), "Usuar.db", null, 1);
         SQLiteDatabase db = DB.getWritableDatabase();
 
+        //Si existen platos en la fecha indicada se añadiran a lista
         Cursor c = db.rawQuery("SELECT * FROM t_platos WHERE dia='"+dia+"' AND mes='"+mes+"' AND año='"+año +"'", null);
         Toast.makeText(this, ""+dia+" "+mes+" "+año, Toast.LENGTH_SHORT).show();
         if (c.moveToFirst()) {
@@ -74,6 +74,7 @@ public class MostrarPlatos extends AppCompatActivity {
             }
         });
 
+        //Vuelve a home
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -37,9 +37,6 @@ public class RecetasFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
     }
 
     @Override
@@ -71,9 +68,5 @@ public class RecetasFragment extends Fragment {
         return view;
 
     }
-    @Override
-    public void onSaveInstanceState(Bundle outstate){
-        super.onSaveInstanceState(outstate);
-        outstate.putInt("currentFragment",2);
-    }
+
 }

@@ -38,14 +38,8 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
-        /*idioma= view.findViewById(R.id.aju_bot_idioma);
-        idioma.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ClaseDialogoIdioma dialogo = new ClaseDialogoIdioma();
-                dialogo.show(getFragmentManager(), "Seleccionar idioma");
-            }
-        });*/
+
+        //boton para borra todos los platos
         bor_platos=(Button) view.findViewById(R.id.aju_bot_borrar_platos);
         bor_platos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +49,8 @@ public class SettingsFragment extends Fragment {
                 db.execSQL("DELETE FROM t_platos");
             }
         });
+
+        //Boton para borrar todas las recetas
         bor_recetas=view.findViewById(R.id.aju_bot_borrar_recetas);
         bor_recetas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,9 +58,10 @@ public class SettingsFragment extends Fragment {
                 miDB DB =new miDB(getContext(),"Usuar.db",null,1);
                 SQLiteDatabase db = DB.getWritableDatabase();
                 db.execSQL("DELETE FROM t_recetas");
-
             }
         });
+
+        //Boton para borrar todos los usuarios
         bor_usuarios=view.findViewById(R.id.aju_bot_borrar_usuarios);
         bor_usuarios.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,15 +70,10 @@ public class SettingsFragment extends Fragment {
                 SQLiteDatabase db = DB.getWritableDatabase();
                 db.execSQL("DELETE FROM t_usuarios");
 
-                Intent intent= new Intent(getContext(),MostrarRecetas.class);
+                Intent intent= new Intent(getContext(),MainActivity.class);
                 startActivity(intent);
             }
         });
         return view;
-    }
-    @Override
-    public void onSaveInstanceState(Bundle outstate){
-        super.onSaveInstanceState(outstate);
-        outstate.putInt("currentFragment",3);
     }
 }

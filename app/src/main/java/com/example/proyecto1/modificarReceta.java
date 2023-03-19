@@ -37,6 +37,8 @@ public class modificarReceta extends AppCompatActivity {
         titulo.setText(intent.getStringExtra("titulo"));
         pasos.setText(intent.getStringExtra("pasos"));
         String titulo1=titulo.getText().toString();
+
+        //Vuelve a home
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,6 +47,7 @@ public class modificarReceta extends AppCompatActivity {
             }
         });
 
+        //Elimina la receta
         borrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +64,7 @@ public class modificarReceta extends AppCompatActivity {
             }
         });
 
-        //
+        //Si el nombre y los pasos no son vacios los modifica
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

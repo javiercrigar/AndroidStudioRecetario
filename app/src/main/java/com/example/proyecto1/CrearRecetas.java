@@ -16,17 +16,11 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class CrearRecetas extends AppCompatActivity {
-   // private Button volver;
-    //private Button crear;
-    //private Integer color=Color.WHITE;
-    //private String idioma="eu";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState!= null){
-            //color= savedInstanceState.getInt("color");
-            //idioma= savedInstanceState.getString("idioma");
         }
         setContentView(R.layout.activity_crear_recetas);
 
@@ -65,14 +59,9 @@ public class CrearRecetas extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        //savedInstanceState.putString("idioma", Locale.getDefault().getLanguage());
-        //savedInstanceState.putInt("color",color);
-        //savedInstanceState.putString("idioma",idioma);
     }
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState){
         super.onRestoreInstanceState(savedInstanceState);
-        //color=savedInstanceState.getInt("color");
-        //idioma=savedInstanceState.getString("idioma");
     }
 }

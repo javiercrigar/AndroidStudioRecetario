@@ -30,13 +30,8 @@ public class Registro extends AppCompatActivity {
         EditText pass = (EditText) findViewById(R.id.reg_pass);
         EditText gmail = (EditText) findViewById(R.id.reg_gmail);
 
-       /* int orientation = getResources().getConfiguration().orientation;
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_registro_land);
-        } else {
-            setContentView(R.layout.activity_registro_land);
-        }*/
 
+        //Boton para volver a la activity iniciar sesion
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +41,8 @@ public class Registro extends AppCompatActivity {
             }
         });
 
+        //Si el usuario ha rellenado todos los campos y el usuario introducido no esta escogido previamente por otra persona
+        //añade es usuario a la base de datos
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

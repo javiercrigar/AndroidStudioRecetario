@@ -26,18 +26,15 @@ public class MainFragment extends Fragment {
     private CalendarView calendarView;
 
     public MainFragment() {
-
     }
 
     public static MainFragment newInstance() {
         MainFragment fragment = new MainFragment();
-
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
     }
 
@@ -65,12 +62,6 @@ public class MainFragment extends Fragment {
                 ClaseDialogoAñadirPlato.setMes(mes);
                 ClaseDialogoAñadirPlato dialogo = new ClaseDialogoAñadirPlato();
                 dialogo.show(getFragmentManager(), "Seleccione una accion");
-
-                /*Intent intent= new Intent(getContext(),MostrarPlatos.class);
-                intent.putExtra("dia",dia);
-                intent.putExtra("mes",mes);
-                intent.putExtra("año",año);
-                startActivity(intent);*/
             }
         });
 
@@ -78,10 +69,4 @@ public class MainFragment extends Fragment {
         return view;
     }
 
-
-    @Override
-    public void onSaveInstanceState(Bundle outstate){
-        super.onSaveInstanceState(outstate);
-        outstate.putInt("currentFragment",1);
-    }
 }

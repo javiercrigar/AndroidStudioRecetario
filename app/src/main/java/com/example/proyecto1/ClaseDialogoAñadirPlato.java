@@ -19,6 +19,7 @@ public class ClaseDialogoAñadirPlato extends DialogFragment {
 
     }
 
+    //Crea un dialogo en el que te da a elegir entre añadir plato o ver plato y manda la fecha seleccionada mediante intent para saber la fecha
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         super.onCreateDialog(savedInstanceState);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

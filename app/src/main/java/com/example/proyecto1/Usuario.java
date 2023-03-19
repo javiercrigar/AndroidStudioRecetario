@@ -45,7 +45,7 @@ public class Usuario extends AppCompatActivity {
         gma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cambiarGmail(g.getText().toString(),g2.getText().toString());
+                cambiarGmail();
             }
         });
         volver.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +57,7 @@ public class Usuario extends AppCompatActivity {
         });
 
     }
-
+    //Modifica la contraseña
     private void cambiarContraseña(String p1, String p2, String n){
         if (!p1.equals(p2)){
             Toast.makeText(this, "La contraseñas no son iguales", Toast.LENGTH_SHORT).show();
@@ -72,14 +72,21 @@ public class Usuario extends AppCompatActivity {
         }
     }
 
-    private void cambiarGmail(String p1, String n){
+    //Modifica el gmail
+    private void cambiarGmail(){
 
         miDB DB = new miDB(getApplicationContext(), "Usuar.db", null, 1);
         SQLiteDatabase db = DB.getWritableDatabase();
-        String query = "UPDATE t_usuarios SET gmail='" + p1 + "' WHERE name='"+n+"'";
-        db.execSQL(query);
-        db.close();
-        Toast.makeText(this, "Gmail modificado", Toast.LENGTH_SHORT).show();
 
+        if(g.getText().toString().isEmpty()==false && g2.getText().toString().isEmpty()==false) {
+            String query = "UPDATE t_usuarios SET gmail='" + g2 + "' WHERE name='" + g + "'";
+            db.execSQL(query);
+            db.close();
+            Toast.makeText(this, "Gmail modificado", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Campo vacio", Toast.LENGTH_SHORT).show();
+
+        }
     }
 }

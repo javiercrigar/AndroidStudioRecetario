@@ -64,6 +64,7 @@ public class miDB extends SQLiteOpenHelper {
     }
 
 
+    //Crea una nueva receta
     public void crearnuevareceta(String name, String pasos) {
         SQLiteDatabase bd = getWritableDatabase();
 
@@ -91,7 +92,7 @@ public class miDB extends SQLiteOpenHelper {
         }
         bd.close();
     }
-    // añade un nuevo usuario a la base de datos con su contraseña
+    //Añade un nuevo usuario a la base de datos con su contraseña
     public void añadir(String name, String pass, String gmail) {
         SQLiteDatabase bd = getWritableDatabase();
 
@@ -105,13 +106,13 @@ public class miDB extends SQLiteOpenHelper {
         bd.close();
     }
 
+    //Comprueba si la contraseña es correcta
     public boolean comprobarContraseña(String usu, String contra){
 
         SQLiteDatabase db=getWritableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM t_usuarios ",null);
         if (c.moveToFirst()) {}
         String dos = c.getString((1));
-        //Toast.makeText(Context, ""+dos, Toast.LENGTH_SHORT).show();
         c.close();
         db.close();
         return dos.equals(contra);

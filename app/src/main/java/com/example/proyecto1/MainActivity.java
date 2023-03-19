@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    String usuario;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,10 +18,7 @@ public class MainActivity extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //miBD base = new miBD(getApplicationContext(),"Usuarios.db",null,1);
-
                 Intent intent = new Intent(MainActivity.this,IniciarSesion.class);
-                intent.putExtra("titulo",usuario);
                 startActivity(intent);
             }
         });
