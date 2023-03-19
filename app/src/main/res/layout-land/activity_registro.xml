@@ -49,6 +49,7 @@
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
+        android:hint="Contraseña"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -58,6 +59,7 @@
         android:layout_marginStart="128dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="Contraseña"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/reg_pass" />
@@ -70,7 +72,7 @@
         android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="Nombre de usuario"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

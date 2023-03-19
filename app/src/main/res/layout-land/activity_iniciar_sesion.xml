@@ -9,10 +9,13 @@
         android:id="@+id/is_bot_iniciar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="344dp"
         android:text="Iniciar Sesion"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/is_pass"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -29,33 +32,30 @@
         android:id="@+id/is_bot_volver"
         android:layout_width="144dp"
         android:layout_height="51dp"
-        android:layout_marginStart="372dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="20dp"
         android:text="@string/title_Volver"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/is_pass"
         app:layout_constraintTop_toBottomOf="@+id/is_bot_reg" />
 
     <EditText
         android:id="@+id/is_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
-        android:layout_marginEnd="552dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="35dp"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/is_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPassword"
