@@ -1,20 +1,15 @@
 package com.example.proyecto1;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Build;
@@ -32,7 +27,7 @@ public class IniciarSesion extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_iniciar_sesion);
+        setContentView(R.layout.activity_login);
 
         Button volver = (Button) findViewById(R.id.is_bot_volver);
         Button iniciar = (Button) findViewById(R.id.is_bot_iniciar);

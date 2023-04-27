@@ -1,13 +1,8 @@
 package com.example.proyecto1;
 
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,13 +10,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 
 public class Registro extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+        setContentView(R.layout.activity_registrarusuario);
 
         Button volver = (Button) findViewById(R.id.reg_bot_volver);
         Button next=(Button) findViewById(R.id.reg_bot_next);
@@ -31,7 +25,7 @@ public class Registro extends AppCompatActivity {
         EditText gmail = (EditText) findViewById(R.id.reg_gmail);
 
 
-        //Boton para volver a la activity iniciar sesion
+
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

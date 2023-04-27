@@ -22,4 +22,10 @@
         android:onClick="calendarClick"
          />
 
+    <Button
+        android:id="@+id/camara"
+        android:layout_width="192dp"
+        android:layout_height="133dp"
+        android:text="Camara" />
+
 </FrameLayout>

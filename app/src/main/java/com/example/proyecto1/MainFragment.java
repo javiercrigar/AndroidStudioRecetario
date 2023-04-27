@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -63,6 +64,15 @@ public class MainFragment extends Fragment {
                 ClaseDialogoAñadirPlato.setMes(mes);
                 ClaseDialogoAñadirPlato dialogo = new ClaseDialogoAñadirPlato();
                 dialogo.show(getFragmentManager(), "Seleccione una accion");
+            }
+        });
+
+        Button btn_camara= view.findViewById(R.id.camara);
+        btn_camara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(),Camara.class);
+                startActivity(intent);
             }
         });
 
