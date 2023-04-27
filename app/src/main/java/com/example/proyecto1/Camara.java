@@ -1,6 +1,9 @@
 package com.example.proyecto1;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +21,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,14 +48,82 @@ public class Camara extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_IMAGE_GALLERY = 2;
     Button btnBuscar, btnSubir, btnCamara, btnVolver;
-    ImageView iv;
+    ImageView image;
     EditText et;
-    Bitmap bitmap;
+    byte[] imageByte;
     private static final int REQUEST_CAMERA_PERMISSION = 1;
 
     int PICK_IMAGE_REQUEST=1;
     //https://www.youtube.com/watch?v=p1HdvY5YeHE&ab_channel=HaranitGonzalez
     //codigo visto aqui
+
+    private ActivityResultLauncher<PickVisualMediaRequest> pickMedia =
+            registerForActivityResult(new
+                    ActivityResultContracts.PickVisualMedia(), uri -> {
+                if (uri != null) {
+                    Log.d("PhotoPicker", "Selected URI: " + uri);
+                    image = findViewById(R.id.cam_imagen);
+                    image.setImageURI(uri);
+                    Bitmap bitmapFoto = null;
+                    try {
+                        bitmapFoto = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    int anchoDestino = image.getWidth();
+                    int altoDestino = image.getHeight();
+                    int anchoImagen = bitmapFoto.getWidth();
+                    int altoImagen = bitmapFoto.getHeight();
+                    float ratioImagen = (float) anchoImagen / (float) altoImagen;
+                    float ratioDestino = (float) anchoDestino / (float) altoDestino;
+                    int anchoFinal = anchoDestino;
+                    int altoFinal = altoDestino;
+                    if (ratioDestino > ratioImagen) {
+                        anchoFinal = (int) ((float)altoDestino * ratioImagen);
+                    } else {
+                        altoFinal = (int) ((float)anchoDestino / ratioImagen);
+                    }
+                    Bitmap bitmapredimensionado = Bitmap.createScaledBitmap(bitmapFoto,anchoFinal,altoFinal,true);
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmapredimensionado.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    image.setImageBitmap(bitmapredimensionado);
+                    imageByte=stream.toByteArray();
+
+                } else {
+                    Log.d("PhotoPicker", "No media selected");
+                }
+            });
+
+    private ActivityResultLauncher<Intent> takePictureLauncher =
+            registerForActivityResult(new
+                    ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == RESULT_OK &&
+                        result.getData()!= null) {
+                    Bundle bundle = result.getData().getExtras();
+                    image = findViewById(R.id.cam_imagen);
+                    Bitmap laminiatura = (Bitmap) bundle.get("data");
+                    int anchoDestino = image.getWidth();
+                    int altoDestino = image.getHeight();
+                    int anchoImagen = laminiatura.getWidth();
+                    int altoImagen = laminiatura.getHeight();
+                    float ratioImagen = (float) anchoImagen / (float) altoImagen;
+                    float ratioDestino = (float) anchoDestino / (float) altoDestino;
+                    int anchoFinal = anchoDestino;
+                    int altoFinal = altoDestino;
+                    if (ratioDestino > ratioImagen) {
+                        anchoFinal = (int) ((float)altoDestino * ratioImagen);
+                    } else {
+                        altoFinal = (int) ((float)anchoDestino / ratioImagen);
+                    }
+                    Bitmap bitmapredimensionado = Bitmap.createScaledBitmap(laminiatura,anchoFinal,altoFinal,true);
+                    image.setImageBitmap(bitmapredimensionado);
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmapredimensionado.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    imageByte=stream.toByteArray();
+                } else {
+                    Log.d("TakenPicture", "No photo taken");
+                }
+            });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +132,7 @@ public class Camara extends AppCompatActivity {
         btnSubir = findViewById(R.id.cam_subir);
 
         et = (EditText) findViewById(R.id.cam_texto);
-        iv = findViewById(R.id.cam_imagen);
+        image = findViewById(R.id.cam_imagen);
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,9 +152,7 @@ public class Camara extends AppCompatActivity {
         btnCamara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //requestCameraPermission();
                 abrirCamara();
-                //showImageSelectionDialog();
             }
         });
         btnVolver = findViewById(R.id.cam_volver);
@@ -95,24 +165,15 @@ public class Camara extends AppCompatActivity {
         });
         }
     public void abrirCamara(){
-        Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-        Toast.makeText(this, "Hubo un error al obtener la imagen", Toast.LENGTH_SHORT).show();
-
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, PICK_IMAGE_REQUEST);
-        }
+        Intent elIntentFoto= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        takePictureLauncher.launch(elIntentFoto);
     }
     private void showFileChooser(){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Seleciona imagen"),PICK_IMAGE_REQUEST);
+        pickMedia.launch(new PickVisualMediaRequest.Builder()
+                .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
+                .build());
     }
-    public String getStringImagen(Bitmap bitmap){
-        ByteArrayOutputStream bit = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,bit);
-        byte[] imageByte = bit.toByteArray();
+    public String getStringImagen(){
         String encodedImage = Base64.encodeToString(imageByte, Base64.DEFAULT);
         return encodedImage;
 
@@ -147,40 +208,63 @@ public class Camara extends AppCompatActivity {
         ){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                String imagen =getStringImagen(bitmap);
+                String imagen =getStringImagen();
                 String nombre = et.getText().toString().trim();
 
                 Map<String,String> params = new HashMap<>();
                 params.put("foto",imagen);
                 params.put("nombre",nombre);
 
-
                 return params;
             }
         };
+
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+//            Uri filePath = data.getData();
+//            try {
+//                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+//                image.setImageBitmap(bitmap);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        else{
+//            Bundle extras = data.getExtras();
+//            Bitmap imageBitmap = (Bitmap) extras.get("data");
+//            image.setImageBitmap(imageBitmap);
+//        }
+//    }
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePath = data.getData();
-            try {
-                //Cómo obtener el mapa de bits de la Galería
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                //Configuración del mapa de bits en ImageView
-                iv.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else{
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            iv.setImageBitmap(imageBitmap);
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putByteArray("imagen", imageByte);
+
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        imageByte= savedInstanceState.getByteArray("imagen");
+        if (imageByte != null) {
+//            byte[] byteArray = savedInstanceState.getByteArray("imagen");
+//            if (byteArray != null) {
+            Bitmap x = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+            image.setImageBitmap(x);
         }
     }
+//        imageByte=savedInstanceState.getByteArray("imagen");
+//        if(imageByte!=null){
+//           Bitmap imagenBitMap = BitmapFactory.decodeByteArray(imageByte,0,imageByte.length);
+//
+//           image.setImageBitmap(imagenBitMap);
+//        }
+
 }

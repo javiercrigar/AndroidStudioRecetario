@@ -1,5 +1,6 @@
 package com.example.proyecto1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -19,6 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -64,7 +68,18 @@ public class login extends AppCompatActivity {
                     if(response.equalsIgnoreCase("ingreso correctamente")){
                         startActivity(new Intent(getApplicationContext(),Home.class));
                         Toast.makeText(login.this, response, Toast.LENGTH_SHORT).show();
+                        FirebaseMessaging.getInstance().getToken()
+                                .addOnCompleteListener(new OnCompleteListener<String>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<String> task) {
+                                        if (!task.isSuccessful()) {
 
+                                            return;
+                                        }
+                                        String token = task.getResult();
+                                        Log.d("token",token);
+                                    }
+                                });
                     }
                     else{
                         Toast.makeText(login.this, response, Toast.LENGTH_SHORT).show();
